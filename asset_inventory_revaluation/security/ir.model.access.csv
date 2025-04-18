@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asset_user,access_asset_user,model_asset_inventory_revaluation_asset,,1,1,1,1
+access_inventory_user,access_inventory_user,model_asset_inventory_revaluation_inventory,,1,1,1,1
+access_revaluation_user,access_revaluation_user,model_asset_inventory_revaluation_revaluation,,1,1,1,1
