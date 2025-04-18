@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_asset_tree" model="ir.ui.view">
+        <field name="name">asset.tree</field>
+        <field name="model">asset_inventory_revaluation.asset</field>
+        <field name="arch" type="xml">
+            <tree string="Assets">
+                <field name="name"/>
+                <field name="asset_code"/>
+                <field name="purchase_date"/>
+                <field name="purchase_value"/>
+                <field name="current_value"/>
+                <field name="location"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_asset_form" model="ir.ui.view">
+        <field name="name">asset.form</field>
+        <field name="model">asset_inventory_revaluation.asset</field>
+        <field name="arch" type="xml">
+            <form string="Asset">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="asset_code"/>
+                        <field name="purchase_date"/>
+                        <field name="purchase_value"/>
+                        <field name="current_value" readonly="1"/>
+                        <field name="location"/>
+                        <field name="state"/>
+                    </group>
+                    <notebook>
+                        <page string="Inventory">
+                            <field name="inventory_ids">
+                                <tree editable="bottom">
+                                    <field name="inventory_date"/>
+                                    <field name="quantity"/>
+                                    <field name="location"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Revaluation">
+                            <field name="revaluation_ids">
+                                <tree editable="bottom">
+                                    <field name="revaluation_date"/>
+                                    <field name="old_value"/>
+                                    <field name="new_value"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_asset_inventory_revaluation_root" name="Asset Inventory & Revaluation" sequence="10"/>
+
+    <menuitem id="menu_assets" name="Assets" parent="menu_asset_inventory_revaluation_root" action="action_assets"/>
+
+    <record id="action_assets" model="ir.actions.act_window">
+        <field name="name">Assets</field>
+        <field name="res_model">asset_inventory_revaluation.asset</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
